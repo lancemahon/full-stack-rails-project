@@ -15,7 +15,7 @@ class CharactersController < OpenReadController
 
   # POST /characters
   def create
-    @character = current_user.characters.build(character_params)
+      @character = current_user.characters.build(character_params)
 
     if @character.save
       render json: @character, status: :created, location: @character
@@ -46,6 +46,6 @@ class CharactersController < OpenReadController
 
     # Only allow a trusted parameter "white list" through.
     def character_params
-      params.require(:character).permit(:name, :specialty)
+      params.require(:character).permit(:name, :specialty, :user_id)
     end
 end
